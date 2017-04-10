@@ -1,0 +1,31 @@
+resource_types:
+- name: artifactory
+  type: docker-image
+  source:
+    repository: pivotalservices/artifactory-resource
+    
+resources:
+- name: webmon
+  type: git
+  source:
+    uri: https://github.com/jelledrm/weblogic-monitoring.git
+
+jobs:
+- name: fetch-from-git-and-list
+  plan:
+  - get: webmon
+  - task: list-repo-content
+    config:
+      platform: linux
+      inputs:
+      - name: webmon
+      image_resource:
+        type: docker-image
+        source: { repository: ubuntu }
+      run:
+        path: sh
+        args:
+        - -exc
+        - |
+          ls -R ./webmon
+          
