@@ -9,14 +9,14 @@ resources:
   type: artifactory
   check_every: 1m
   source:
-    endpoint: http://172.18.0.4:8081/artifactory
+    endpoint: http://artifactory:8081/artifactory
     repository: "/docker-local/myapp"
     regex: "myapp-(?<version>.*).txt"
     username: admin
     password: admin
 
 jobs:
-- name: 1-build-an-artifact
+- name: pusha
   plan:
   - task: create-artifact
     config:
@@ -42,7 +42,7 @@ jobs:
   - get: artifactory-repository
     trigger: true
     passed:
-      - 1-build-an-artifact
+      - pusha
   - task: use-new-file
     config:
       platform: linux

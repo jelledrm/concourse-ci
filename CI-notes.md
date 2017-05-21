@@ -8,7 +8,8 @@ Remove all container:
 ---------------------------------------------------------------------------------
 
 Docker for windows:
-	add storage-driver": "aufs" to the Daemon configuration file.
+	- add storage-driver": "aufs" to the Daemon configuration file.
+	- Share D drive
 
 Use this predefined network:
 	docker network create devnetwork --subnet 172.18.0.0/16 --gateway 172.18.0.1
