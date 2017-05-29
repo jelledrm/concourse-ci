@@ -12,4 +12,5 @@
  - /etc/init.d/docker restart
  - /var/lib/boot2docker/ --> profile
 
+- Whitelist VM ip in FIREWALL
 

@@ -1,0 +1,2 @@
+FROM concourse/concourse:2.7.4
+ADD /worker /concourse-keys/worker
